@@ -1,4 +1,15 @@
 {
-  "presets": ["env"],
+  "presets": [
+    [
+      "env", {
+        "targets": {
+          "ie": "11",
+          "safari": "9"
+        },
+        "useBuiltIns": "usage"
+      }
+    ],
+    "react"
+  ],
   "plugins": ["transform-object-rest-spread", "transform-object-assign"]
 }
