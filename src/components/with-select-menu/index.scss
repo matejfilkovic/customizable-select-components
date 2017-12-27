@@ -1,0 +1,21 @@
+.with-select-menu__container {
+  box-sizing: border-box;
+  position: relative;
+  user-select: none;
+}
+
+.with-select-menu__container:focus {
+  outline: none;
+}
+
+.with-select-menu__options {
+  box-sizing: border-box;
+  position: absolute;
+  list-style-type: none;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+}
