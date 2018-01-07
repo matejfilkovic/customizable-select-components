@@ -289,13 +289,18 @@ export default function withSelectMenu(
 
       const {
         optionsContainerClassName,
-        renderOptionContent
+        renderOptionContent,
+        renderEmptyOptions
       } = this.props
 
       const className = classnames(
         'with-select-menu__options',
         optionsContainerClassName
       )
+
+      if (
+        !menuOptions.length && !renderEmptyOptions
+      ) return null
 
       const style = this.getOptionsStyle()
 
@@ -306,17 +311,19 @@ export default function withSelectMenu(
           style={style}
         >
           {
-            menuOptions.map((option, index) => (
-              <Option
-                option={option}
-                onHover={this.handleOptionHover}
-                hoveredIndex={hoveredIndex}
-                onClick={this.changeSelectedValue}
-                index={index}
-                key={option.value}
-                renderOptionContent={renderOptionContent}
-              />
-            ))
+            menuOptions.length ? (
+              menuOptions.map((option, index) => (
+                <Option
+                  option={option}
+                  onHover={this.handleOptionHover}
+                  hoveredIndex={hoveredIndex}
+                  onClick={this.changeSelectedValue}
+                  index={index}
+                  key={option.value}
+                  renderOptionContent={renderOptionContent}
+                />
+              ))
+            ) : renderEmptyOptions && renderEmptyOptions()
           }
         </ul>
       )
@@ -411,7 +418,8 @@ export default function withSelectMenu(
     inputPlaceholderClassName: PropTypes.string.isRequired,
     optionsContainerClassName: PropTypes.string.isRequired,
     renderOptionContent: PropTypes.func.isRequired,
-    containerClassName: PropTypes.string
+    containerClassName: PropTypes.string,
+    renderEmptyOptions: PropTypes.func
   }
 
   WithMenu.defaultProps = {
@@ -422,7 +430,8 @@ export default function withSelectMenu(
     disabled: false,
     menuFixed: false,
     containerClassName: '',
-    value: UNSELECTED_OPTION
+    value: UNSELECTED_OPTION,
+    renderEmptyOptions: null
   }
 
   return WithMenu
