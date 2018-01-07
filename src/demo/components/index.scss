@@ -1,0 +1,51 @@
+.select__input,
+.select__options {
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.select__input {
+  font-size: 16px;
+  color: #2f2f2f;
+  border-radius: 2px;
+  border: solid 1px #979797;
+  padding: 6px 0px 6px 16px;
+  box-sizing: border-box;
+}
+
+.select__input:focus {
+  border: none;
+  outline: none;
+}
+
+.select__input--error {
+  background-color: #fff3f3;
+}
+
+.select__input--disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+  color: gray;
+}
+
+.select__options {
+  padding: 10px 0;
+  max-height: 270px;
+  margin-top: 5px;
+}
+
+.select__empty,
+.select__option {
+  padding: 10px 0 10px 20px;
+}
+
+.select__option {
+  cursor: pointer;
+}
+
+.select__option--hovered {
+  background-color: #191970;
+  color: white;
+}

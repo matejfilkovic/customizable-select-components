@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = (entry, outputPath) => {
@@ -16,7 +17,8 @@ module.exports = (entry, outputPath) => {
       chunks: false
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx'],
+      modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
     module: {
       rules: [
