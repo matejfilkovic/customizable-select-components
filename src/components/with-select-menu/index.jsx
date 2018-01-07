@@ -57,14 +57,12 @@ export default function withSelectMenu(
     }
 
     componentWillReceiveProps(nextProps) {
-      // When options are received, reset the component's
-      // state.
-      if (
-        (!this.props.options || !this.props.options.length) &&
-        (nextProps.options && nextProps.options.length)
-      ) {
+      // When new options are received, pass them
+      // to state.
+      if (this.props.options !== nextProps.options) {
         this.setState({
-          ...INITIAL_STATE,
+          ...this.state,
+          hoveredIndex: UNSELECTED_OPTION,
           menuOptions: nextProps.options
         })
       }
