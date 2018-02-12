@@ -113,8 +113,6 @@ export default function withSelectMenu(
       } = this.props
 
       onChange(new Event(id, value))
-
-      this.handleBlur()
     }
 
     handleKeyDown(event) {
