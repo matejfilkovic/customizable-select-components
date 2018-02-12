@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import isEqual from 'lodash.isequal'
 
 import Option from './option'
 
@@ -59,7 +60,10 @@ export default function withSelectMenu(
     componentWillReceiveProps(nextProps) {
       // When new options are received, pass them
       // to state.
-      if (this.props.options !== nextProps.options) {
+      if (
+        (this.props.options !== nextProps.options) &&
+        !isEqual(this.props.options, nextProps.options)
+      ) {
         this.setState({
           ...this.state,
           hoveredIndex: UNSELECTED_OPTION,
